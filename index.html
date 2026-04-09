@@ -30,7 +30,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none; /* Hide default cursor for custom one */
+            cursor: none; 
         }
 
         body {
@@ -116,7 +116,7 @@
             border-color: var(--accent-blue);
         }
 
-        /* --- Layout & Glassmorphism --- */
+        /* --- Layout & Glass --- */
         section {
             min-height: 100vh;
             display: flex;
@@ -352,7 +352,7 @@
                 top: `${posY}px`
             }, { duration: 150, fill: "forwards" });
 
-            // Subtle Parallax effect on background based on mouse movement
+            // Subtle Parallax effect on background 
             const bg = document.getElementById('parallax-bg');
             const xMove = (posX / window.innerWidth - 0.5) * 20;
             const yMove = (posY / window.innerHeight - 0.5) * 20;
@@ -378,7 +378,7 @@
         themeBtn.addEventListener('click', () => {
             document.body.classList.toggle('tinted-mode');
             
-            // Audio feedback (Subtle click sound)
+            // Audio feedback 
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const oscillator = audioCtx.createOscillator();
