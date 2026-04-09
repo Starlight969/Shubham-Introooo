@@ -1,0 +1,79 @@
+/* --- Traditional Contact Container Styles --- */
+        .contact-container {
+            max-width: 550px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 3rem 2.5rem;
+            position: relative;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .glass-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 14px 16px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .glass-input::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 300;
+        }
+
+        .glass-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            background: rgba(0, 243, 255, 0.05);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.15);
+        }
+
+        textarea.glass-input {
+            resize: vertical; /* Allows user to drag the bottom but keeps width locked */
+            min-height: 120px;
+        }
+
+        /* Success Message Styling */
+        .success-hidden {
+            opacity: 0;
+            transform: translateY(10px);
+            color: var(--accent-blue);
+            font-family: 'Space Grotesk', sans-serif;
+            transition: all 0.5s ease;
+            height: 0;
+            overflow: hidden;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .success-visible {
+            opacity: 1;
+            transform: translateY(0);
+            height: auto;
+            margin-top: 1.5rem;
+        }
