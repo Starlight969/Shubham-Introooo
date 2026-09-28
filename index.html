@@ -4,465 +4,646 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shubham | Introoo</title>
+    <meta name="description" content="Shubham's corner of the internet — student, explorer, builder of random cool things.">
+    <meta name="theme-color" content="#050505">
+
+    <meta property="og:title" content="Shubham | Introoo">
+    <meta property="og:description" content="Student. Unemployed. Explorer. Come say hi.">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23050505'/%3E%3Ctext x='50' y='68' font-size='60' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%2300f3ff'%3ES%3C/text%3E%3C/svg%3E">
+
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* --- CSS Variables --- */
-        :root {
-            --bg-color: #050505;
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
-            --accent-blue: #00f3ff;
-            --accent-violet: #bc13fe;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glow-spread: 20px;
-        }
 
-        body.tinted-mode {
-            --bg-color: #0a0a16;
-            --glass-bg: rgba(0, 243, 255, 0.05);
-            --glass-border: rgba(0, 243, 255, 0.15);
-            --glow-spread: 30px;
-        }
-
-        /* --- Global Styles --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: none; /* Hide default cursor for custom one */
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            transition: background-color 0.5s ease;
-        }
-
-        h1, h2, h3, .logo {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        a { text-decoration: none; color: inherit; }
-
-        /* --- Custom Cursor --- */
-        .cursor-dot, .cursor-outline {
-            position: fixed;
-            top: 0; left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            pointer-events: none;
-        }
-        .cursor-dot {
-            width: 8px; height: 8px;
-            background-color: var(--accent-blue);
-            box-shadow: 0 0 10px var(--accent-blue);
-        }
-        .cursor-outline {
-            width: 40px; height: 40px;
-            border: 1px solid var(--accent-violet);
-            box-shadow: 0 0 15px rgba(7, 156, 30, 0.3);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-        }
-
-        /* --- Animated Background --- */
-        .bg-glow {
-            position: fixed;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 243, 255, 0.05), transparent 40%),
-                        radial-gradient(circle at 80% 20%, rgba(188, 19, 254, 0.05), transparent 40%);
-            z-index: -1;
-            animation: slowDrift 20s infinite alternate linear;
-        }
-
-        @keyframes slowDrift {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-5%, -5%); }
-        }
-
-        /* --- Navigation --- */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 5%;
-            position: fixed;
-            width: 100%;
-            top: 0; z-index: 100;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid transparent;
-            transition: 0.3s;
-        }
-        nav.scrolled {
-            background: var(--glass-bg);
-            border-bottom: 1px solid var(--glass-border);
-        }
-        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; }
-        .mode-switch {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            color: var(--text-main);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-        .mode-switch:hover {
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
-            border-color: var(--accent-blue);
-        }
-
-        /* --- Layout & Glassmorphism --- */
-        section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 5rem 10%;
-        }
-
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px var(--glow-spread) rgba(188, 19, 254, 0.15);
-            border-color: rgba(188, 19, 254, 0.3);
-        }
-
-        /* --- Typography & Gradients --- */
-        .text-gradient {
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-violet));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
-        }
-        .section-title { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; }
-
-        /* --- Hero Section --- */
-        #hero { align-items: center; text-align: center; }
-        .hero-title { font-size: 5vw; font-weight: 700; margin-bottom: 1rem; opacity: 0; transform: translateY(20px); animation: fadeUp 1s forwards 0.2s;}
-        .hero-tagline { font-size: 1.5rem; color: var(--text-muted); font-weight: 300; letter-spacing: 3px; opacity: 0; transform: translateY(20px); animation: fadeUp 1s forwards 0.5s; }
-        
-        /* --- About Section --- */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        .avatar-container {
-            width: 250px; height: 250px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-violet));
-            padding: 4px;
-            box-shadow: 0 0 30px rgba(188, 19, 254, 0.2);
-        }
-        .avatar {
-            width: 100%; height: 100%;
-            border-radius: 50%;
-            background-color: var(--bg-color); /* Placeholder for actual image */
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fff"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>');
-            background-size: 50%;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        .about-text p { font-size: 1.2rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem; }
-        .traits { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .trait-tag {
-            padding: 0.5rem 1.2rem;
-            border-radius: 30px;
-            border: 1px solid var(--accent-blue);
-            color: var(--accent-blue);
-            font-size: 0.9rem;
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
-        }
-
-        /* --- Skills Section --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-        .skill-card { text-align: center; }
-        .skill-icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent-blue); }
-        .skill-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; }
-        .skill-desc { font-size: 0.9rem; color: var(--text-muted); }
-
-        /* --- Projects Section --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .project-card { position: relative; overflow: hidden; height: 250px; display: flex; flex-direction: column; justify-content: flex-end; }
-        .project-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            z-index: 1;
-        }
-        .project-info { position: relative; z-index: 2; transform: translateY(20px); opacity: 0.8; transition: 0.4s ease; }
-        .project-card:hover .project-info { transform: translateY(0); opacity: 1; }
-        .project-card h3 { margin-bottom: 0.5rem; color: var(--accent-violet); }
-        .project-card p { font-size: 0.9rem; color: #ccc; }
-
-        /* --- Contact Section --- */
-        .contact-wrapper { max-width: 600px; margin: 0 auto; width: 100%; }
-        .form-group { margin-bottom: 1.5rem; }
-        input, textarea {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.02);
-            border: none;
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1rem;
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            transition: 0.3s;
-        }
-        input:focus, textarea:focus { outline: none; border-bottom-color: var(--accent-blue); background: rgba(0, 243, 255, 0.05); }
-        .btn {
-            background: transparent;
-            border: 1px solid var(--accent-blue);
-            color: var(--accent-blue);
-            padding: 1rem 2rem;
-            width: 100%;
-            border-radius: 5px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-        .btn:hover { background: var(--accent-blue); color: var(--bg-color); box-shadow: 0 0 20px rgba(0, 243, 255, 0.5); cursor: none;}
-
-        /* --- Animations --- */
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s all ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* --- Responsive --- */
-        @media (max-width: 768px) {
-            .about-content { grid-template-columns: 1fr; text-align: center; }
-            .avatar-container { margin: 0 auto; }
-            .traits { justify-content: center; }
-            .cursor-dot, .cursor-outline { display: none; } /* Hide custom cursor on mobile */
-            * { cursor: auto; }
-        }
-    </style>
+    
 </head>
+
 <body>
 
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-outline" id="cursor-outline"></div>
+    <div class="noise-overlay"></div>
 
     <div class="bg-glow" id="parallax-bg"></div>
+
+    <!-- =========================
+         NAV
+    ========================= -->
 
     <nav id="navbar">
         <div class="logo">Me</div>
         <button class="mode-switch" id="theme-toggle">✨ Mode</button>
     </nav>
 
+    <!-- =========================
+         HERO
+    ========================= -->
+
     <section id="hero">
-        <h1 class="hero-title">Hi, I'm <span class="text-gradient">Shubham</span></h1>
-        <p class="hero-tagline">Student | Unemployed | Explorer</p>
+
+        <h1 class="hero-title">
+            Hi, I'm <span class="text-gradient">Shubham</span>
+        </h1>
+
+        <p class="hero-tagline">
+            Student | Unemployed | Explorer
+        </p>
+
+        <div class="scroll-cue">
+            <span>Scroll</span>
+            <span class="chevron"></span>
+        </div>
+
     </section>
 
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
     <section id="about" class="reveal">
-        <h2 class="section-title">Who I Am</h2>
+
+        <h2 class="section-title">
+            Who I Am
+        </h2>
+
         <div class="about-content">
+
             <div class="avatar-container glass-card">
                 <div class="avatar"></div>
             </div>
+
             <div class="about-text">
-                <p>I just don't study; I build, design, and experiment a lottt. I'm navigating the possiblities of the ways one can fuck around, driven by a deep curiosity for how things work and how they can look beautiful.</p>
+
+                <p>
+                    I just don't study; I build, design, and experiment a lottt.
+                    I'm navigating the possiblities of the ways one can fuck around,
+                    driven by a deep curiosity for how things work and how they can
+                    look beautiful.
+                </p>
+
                 <div class="traits">
                     <span class="trait-tag">Lazy Person</span>
                     <span class="trait-tag">Life enjoyer</span>
                     <span class="trait-tag">Is it so?</span>
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
+    <!-- =========================
+         SKILLS
+    ========================= -->
+
     <section id="skills" class="reveal">
-        <h2 class="section-title">What I Do</h2>
+
+        <h2 class="section-title">
+            What I Do
+        </h2>
+
         <div class="skills-grid">
+
             <div class="glass-card skill-card hover-target">
                 <div class="skill-icon">🛏️</div>
                 <h3 class="skill-title">Sleep</h3>
-                <p class="skill-desc">Soo jaaaaaaooooooooo</p>
+                <p class="skill-desc">
+                    Soo jaaaaaaooooooooo
+                </p>
             </div>
+
             <div class="glass-card skill-card hover-target">
                 <div class="skill-icon">🎨</div>
                 <h3 class="skill-title">Anything Random</h3>
-                <p class="skill-desc">Anything that takes interest of mine.</p>
+                <p class="skill-desc">
+                    Anything that takes interest of mine.
+                </p>
             </div>
+
             <div class="glass-card skill-card hover-target">
                 <div class="skill-icon">🎮</div>
                 <h3 class="skill-title">Gaming</h3>
-                <p class="skill-desc">Games Achhhe hai!</p>
+                <p class="skill-desc">
+                    Games Achhhe hai!
+                </p>
             </div>
+
             <div class="glass-card skill-card hover-target">
                 <div class="skill-icon">🧠</div>
                 <h3 class="skill-title">Thoughts</h3>
-                <p class="skill-desc">Connecting the dots between Overthinking and dreamss</p>
+                <p class="skill-desc">
+                    Connecting the dots between Overthinking and dreamss
+                </p>
             </div>
+
         </div>
+
     </section>
 
+    <!-- =========================
+         SOCIALS
+    ========================= -->
 
+    <section id="social" class="reveal">
+
+        <div class="social-section">
+
+            <h2 class="section-title">
+                Let's Connect
+            </h2>
+
+            <p class="social-subtitle">
+                Find me in the places where I spend too much time.
+            </p>
+
+            <div class="social-grid">
+
+                <!-- Instagram -->
+
+                <a
+                    class="glass-card social-card instagram-card hover-target"
+                    href="https://www.instagram.com/_shubham.verse/?hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Shubham's Instagram profile"
+                >
+
+                    <div class="social-icon" aria-hidden="true">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+                        </svg>
+
+                    </div>
+
+                    <div class="social-platform-name">Instagram</div>
+
+                    <div class="social-arrow" aria-hidden="true">↗</div>
+
+                </a>
+
+                <!-- Discord -->
+
+                <a
+                    class="glass-card social-card discord-card hover-target"
+                    href="https://discord.gg/PSJcG4JH"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Join Shubham's Discord server"
+                >
+
+                    <div class="social-icon" aria-hidden="true">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19.54 5.34A16.2 16.2 0 0 0 15.5 4l-.5 1.03a14.3 14.3 0 0 0-6 0L8.5 4a16.2 16.2 0 0 0-4.04 1.34C1.9 9.3 1.2 13.15 1.55 16.95A16.3 16.3 0 0 0 6.5 19.5l1.2-1.64a10.1 10.1 0 0 1-1.9-.93l.46-.36c3.67 1.7 7.65 1.7 11.27 0l.47.36c-.61.36-1.25.67-1.91.93l1.2 1.64a16.3 16.3 0 0 0 4.95-2.55c.42-4.4-.71-8.2-2.7-11.61zM8.68 14.7c-1.1 0-2-.99-2-2.2s.88-2.2 2-2.2c1.12 0 2.01.99 2 2.2 0 1.21-.88 2.2-2 2.2zm6.64 0c-1.1 0-2-.99-2-2.2s.88-2.2 2-2.2c1.12 0 2.01.99 2 2.2z"/>
+                        </svg>
+
+                    </div>
+
+                    <div class="social-platform-name">Discord</div>
+
+                    <div class="social-arrow" aria-hidden="true">↗</div>
+
+                </a>
+
+                <!-- Chess.com -->
+
+                <a
+                    class="glass-card social-card chess-card hover-target"
+                    href="https://link.chess.com/friend/jJnJnI"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open Shubham's Chess.com profile"
+                >
+
+                    <div class="social-icon" aria-hidden="true">
+                        ♞
+                    </div>
+
+                    <div class="social-platform-name">Chess.com</div>
+
+                    <div class="social-arrow" aria-hidden="true">↗</div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
 
     <section id="contact" class="reveal">
-        <h2 class="section-title">Let's Connect</h2>
+
         <div class="contact-wrapper glass-card">
-            <p> <a href="https://www.instagram.com/_shubham.verse/?hl=en"><img src="insta.png" alt="insta" height="100px" width="100px"></a></p> 
-                     <head>   Instagram  </head>
-            <p> <a href="https://discord.gg/e9eDGAj6"><img src="dc.webp" alt="discord" height="100px" width="100px"></a></p>
-            <head>Discord</head>
-        </div>
-    </section>
 
- 
+            <div
+                class="form-title text-gradient"
+                style="font-size: 1.5rem;"
+            >
+                Secure Transmission
+            </div>
 
+            <p
+                style="
+                    text-align:center;
+                    color:var(--text-muted);
+                    margin-bottom:2rem;
+                "
+            >
+                You can use this to send me anonymous messages too,
+                random teas, or even curse me. So don't hold back here.
+            </p>
 
-        
-        <div class="glass-card contact-container">
-            <h3 class="form-title text-gradient">Secure Transmission</h3>
-            <h1 class="form-title text gradient">You can use this to send me anonymous messages too, random teas, or even curse me. So don't hold back here.</h1>
-            
-            <form action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="cfc332d8-35d4-4bf2-adbd-300006007c9e">
-                <input type="hidden" name="subject" value="New Transmission On your Website">
-                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+            <form
+                action="https://api.web3forms.com/submit"
+                method="POST"
+            >
+
+                <input
+                    type="hidden"
+                    name="access_key"
+                    value="cfc332d8-35d4-4bf2-adbd-300006007c9e"
+                >
+
+                <input
+                    type="hidden"
+                    name="subject"
+                    value="New Transmission On your Website"
+                >
+
+                <input
+                    type="checkbox"
+                    name="botcheck"
+                    class="hidden"
+                    style="display:none;"
+                >
 
                 <div class="input-group">
-                    <label for="userName">Name</label>
-                    <input type="text" id="userName" name="name" placeholder="Enter your name" required class="glass-input hover-target">
+
+                    <label for="userName">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="userName"
+                        name="name"
+                        placeholder="Enter your name"
+                        required
+                        class="glass-input hover-target"
+                    >
+
                 </div>
 
                 <div class="input-group">
-                    <label for="userEmail">Email</label>
-                    <input type="email" id="userEmail" name="email" placeholder="Enter your email" required class="glass-input hover-target">
+
+                    <label for="userEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="userEmail"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                        class="glass-input hover-target"
+                    >
+
                 </div>
 
                 <div class="input-group">
-                    <label for="userMessage">Message</label>
-                    <textarea id="userMessage" name="message" rows="5" placeholder="Enter your message, or coordinates...." required class="glass-input hover-target"></textarea>
+
+                    <label for="userMessage">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="userMessage"
+                        name="message"
+                        rows="5"
+                        placeholder="Enter your message, or coordinates...."
+                        required
+                        class="glass-input hover-target"
+                    ></textarea>
+
                 </div>
 
-                <button type="submit" class="btn hover-target" id="submit-btn">Send Transmission</button>
-                <p id="success-msg" class="success-hidden">Thanks for your message btw</p>
+                <button
+                    type="submit"
+                    class="btn hover-target"
+                    id="submit-btn"
+                >
+                    Send Transmission
+                </button>
+
+                <p
+                    id="success-msg"
+                    class="success-hidden"
+                >
+                    Thanks for your message btw
+                </p>
+
             </form>
+
         </div>
+
     </section>
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © <span id="year"></span> Shubham
+        </p>
+
+    </footer>
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
     <script>
-        // Custom Cursor Logic
+
+        /* =========================
+           CUSTOM CURSOR
+        ========================= */
+
         const dot = document.getElementById('cursor-dot');
         const outline = document.getElementById('cursor-outline');
-        const hoverTargets = document.querySelectorAll('.hover-target, a, button');
+
+        const hoverTargets =
+            document.querySelectorAll('.hover-target, a, button');
+
+        const TRAIL_LENGTH = 6;
+        const trailDots = [];
+
+        for (let i = 0; i < TRAIL_LENGTH; i++) {
+
+            const t = document.createElement('div');
+
+            t.className = 'cursor-dot cursor-trail';
+
+            t.style.transition =
+                `left ${0.08 + i * 0.03}s ease-out,
+                 top ${0.08 + i * 0.03}s ease-out`;
+
+            document.body.appendChild(t);
+
+            trailDots.push(t);
+        }
 
         window.addEventListener('mousemove', (e) => {
+
             const posX = e.clientX;
             const posY = e.clientY;
 
             dot.style.left = `${posX}px`;
             dot.style.top = `${posY}px`;
-            
-            // Add a slight delay to the outline for smoothness
-            outline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 150, fill: "forwards" });
 
-            // Subtle Parallax effect on background based on mouse movement
-            const bg = document.getElementById('parallax-bg');
-            const xMove = (posX / window.innerWidth - 0.5) * 20;
-            const yMove = (posY / window.innerHeight - 0.5) * 20;
-            bg.style.transform = `translate(${xMove}px, ${yMove}px)`;
+            trailDots.forEach(t => {
+
+                t.style.left = `${posX}px`;
+                t.style.top = `${posY}px`;
+
+            });
+
+            outline.animate(
+                {
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                },
+                {
+                    duration: 150,
+                    fill: "forwards"
+                }
+            );
+
+            const bg =
+                document.getElementById('parallax-bg');
+
+            const xMove =
+                (posX / window.innerWidth - 0.5) * 20;
+
+            const yMove =
+                (posY / window.innerHeight - 0.5) * 20;
+
+            bg.style.transform =
+                `translate(${xMove}px, ${yMove}px)`;
+
         });
 
-        // Expand cursor on interactive elements
         hoverTargets.forEach(target => {
+
             target.addEventListener('mouseenter', () => {
+
                 outline.style.width = '60px';
                 outline.style.height = '60px';
-                outline.style.backgroundColor = 'rgba(0, 243, 255, 0.1)';
+
+                outline.style.backgroundColor =
+                    'rgba(0, 243, 255, 0.1)';
+
             });
+
             target.addEventListener('mouseleave', () => {
+
                 outline.style.width = '40px';
                 outline.style.height = '40px';
-                outline.style.backgroundColor = 'transparent';
+
+                outline.style.backgroundColor =
+                    'transparent';
+
             });
+
         });
 
-        // Theme Toggle
-        const themeBtn = document.getElementById('theme-toggle');
+        /* =========================
+           THEME TOGGLE
+        ========================= */
+
+        const themeBtn =
+            document.getElementById('theme-toggle');
+
         themeBtn.addEventListener('click', () => {
+
             document.body.classList.toggle('tinted-mode');
-            
-            // Audio feedback (Subtle click sound)
+
             try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const oscillator = audioCtx.createOscillator();
-                const gainNode = audioCtx.createGain();
-                
+
+                const audioCtx =
+                    new (
+                        window.AudioContext ||
+                        window.webkitAudioContext
+                    )();
+
+                const oscillator =
+                    audioCtx.createOscillator();
+
+                const gainNode =
+                    audioCtx.createGain();
+
                 oscillator.type = 'sine';
-                oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
-                oscillator.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.1);
-                
-                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
-                
+
+                oscillator.frequency.setValueAtTime(
+                    800,
+                    audioCtx.currentTime
+                );
+
+                oscillator.frequency.exponentialRampToValueAtTime(
+                    1200,
+                    audioCtx.currentTime + 0.1
+                );
+
+                gainNode.gain.setValueAtTime(
+                    0.1,
+                    audioCtx.currentTime
+                );
+
+                gainNode.gain.exponentialRampToValueAtTime(
+                    0.001,
+                    audioCtx.currentTime + 0.1
+                );
+
                 oscillator.connect(gainNode);
                 gainNode.connect(audioCtx.destination);
+
                 oscillator.start();
-                oscillator.stop(audioCtx.currentTime + 0.1);
+
+                oscillator.stop(
+                    audioCtx.currentTime + 0.1
+                );
+
             } catch (e) {
-                console.log("Audio not supported or blocked");
+
+                console.log(
+                    "Audio not supported or blocked"
+                );
+
             }
+
         });
 
-        // Navbar blur on scroll
+        /* =========================
+           FOOTER YEAR
+        ========================= */
+
+        document.getElementById('year').textContent =
+            new Date().getFullYear();
+
+        /* =========================
+           TILT EFFECT
+        ========================= */
+
+        const tiltCards =
+            document.querySelectorAll(
+                '.skill-card'
+            );
+
+        tiltCards.forEach(card => {
+
+            card.addEventListener('mousemove', (e) => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    e.clientX - rect.left;
+
+                const y =
+                    e.clientY - rect.top;
+
+                const rotateX =
+                    ((y / rect.height) - 0.5) * -10;
+
+                const rotateY =
+                    ((x / rect.width) - 0.5) * 10;
+
+                card.style.transform =
+                    `perspective(600px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-5px)`;
+
+            });
+
+            card.addEventListener('mouseleave', () => {
+
+                card.style.transform = '';
+
+            });
+
+        });
+
+        /* =========================
+           NAVBAR SCROLL
+        ========================= */
+
         window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
+
+            const nav =
+                document.getElementById('navbar');
+
             if (window.scrollY > 50) {
+
                 nav.classList.add('scrolled');
+
             } else {
+
                 nav.classList.remove('scrolled');
+
             }
+
         });
 
-        // Scroll Reveal Animation via Intersection Observer
-        const reveals = document.querySelectorAll('.reveal');
+        /* =========================
+           SCROLL REVEAL
+        ========================= */
+
+        const reveals =
+            document.querySelectorAll('.reveal');
+
         const revealOptions = {
             threshold: 0.15,
             rootMargin: "0px 0px -50px 0px"
         };
 
-        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target); // Only animate once
-            });
-        }, revealOptions);
+        const revealOnScroll =
+            new IntersectionObserver(
+                function(entries, observer) {
+
+                    entries.forEach(entry => {
+
+                        if (!entry.isIntersecting)
+                            return;
+
+                        entry.target.classList.add('active');
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    });
+
+                },
+                revealOptions
+            );
 
         reveals.forEach(reveal => {
+
             revealOnScroll.observe(reveal);
+
         });
+
     </script>
+
 </body>
 </html>
